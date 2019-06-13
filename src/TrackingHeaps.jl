@@ -26,7 +26,7 @@ For more information, please refer to <http://unlicense.org>
 =#
 
 """
-TrackingHeap is a heap with a tracking system for the stored values.
+TrackingHeaps offers a heap with a tracking system for the stored values.
 
 Inserting a value into a TrackingHeap returns a tracker for the value. The
 tracker can be used to access, update, and delete the value without searching
@@ -42,14 +42,15 @@ If the tracking system is not needed, there is little reason to use this heap.
 I wrote this package because the MutableBinaryHeap of DataStructures.jl did not
 allow some behavior I wanted; behavior as:
 1) a non-top value can be deleted without being made top first;
-2) values can be deleted and others inserted without double rebalancing;
+2) convenience methods allow to `pop!`/`delete!` stored values and
+   immediatelly `track!` others, avoiding double-rebalancing;
 3) after a value is deleted, its tracker can be re-reused to re-insert
    that value or insert a new value (but this is not done automatically);
 4) the arity of the heap (binary, trinary, etc..) can be defined by the
-   user (by parametric type) and inccur in minimal overhead.
-5) all the stored values are in a Vector{V} in heap order, for easy
+   user (by parametric type) and inccur in minimal overhead (I hope);
+5) all the stored values are in a `Vector{V}` in heap order, for easy
    backdoor/hacking access;
-6) the integer type that is the tracker type can be defined by the user;
+6) the integer type that is the tracker type can be defined by the user.
 """
 module TrackingHeaps
 # TODO: To allow automatic reuse create a different heap, as the struct would
