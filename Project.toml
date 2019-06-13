@@ -1,4 +1,5 @@
 name = "TrackingHeaps"
+version = "0.1.0"
 uuid = "d94bfb22-46ad-56c3-87d0-f6c298cb800e"
 authors = ["Henrique Becker <henriquebecker91@gmail.com>"]
 
